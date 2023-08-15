@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection</title>
+</head>
+<body>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="model_choice">Choose a model:</label>
+        <select name="model_choice" id="model_choice">
+            <option value="lgbm">LGBM</option>
+            <option value="xgb">XGBoost</option>
+            <option value="rf">Random Forest</option>
+        </select>
+        <br><br>
+        <label for="file">Upload dataset:</label>
+        <input type="file" name="file" accept=".csv">
+        <br><br>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
