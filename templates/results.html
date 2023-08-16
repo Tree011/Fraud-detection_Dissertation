@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="mb-3">Prediction Results</h2>
+
+<div class="alert alert-info">
+    Total number of detected frauds: {{ fraud_count }}
+</div>
+
+{% if fraud_indices %}
+<div class="alert alert-warning">
+    Indices of detected frauds: {{ fraud_indices }}
+</div>
+{% endif %}
+
+<h4>Metrics:</h4>
+<ul>
+    {% if accuracy %}
+    <li>Accuracy: {{ accuracy }}</li>
+    {% else %}
+    <li>Accuracy: N/A (True labels not provided)</li>
+    {% endif %}
+
+    {% if precision %}
+    <li>Precision: {{ precision }}</li>
+    {% else %}
+    <li>Precision: N/A (True labels not provided)</li>
+    {% endif %}
+
+    {% if recall %}
+    <li>Recall: {{ recall }}</li>
+    {% else %}
+    <li>Recall: N/A (True labels not provided)</li>
+    {% endif %}
+</ul>
+
+<h4>Visualizations:</h4>
+<div>
+    <h5>Confusion Matrix:</h5>
+    <div>{{ cm_html|safe }}</div>
+</div>
+
+{% if hist_html %}
+<div>
+    <h5>Predicted Probabilities Distribution:</h5>
+    <div>{{ hist_html|safe }}</div>
+</div>
+{% endif %}
+
+{% endblock %}
